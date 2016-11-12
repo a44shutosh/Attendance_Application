@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="ashutosh.foodie_guide.attendance_application.Status">
+
+
+
+    <TableLayout
+        android:paddingTop="50dp"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:shrinkColumns="*"  android:stretchColumns="*" android:background="#ffffff">
+
+
+
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:gravity="center_horizontal">
+
+
+            <TextView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="18dp" android:text="Course Code"  android:layout_span="3"
+                android:padding="18dip" android:background="@drawable/text_bg"
+
+                android:gravity="center"
+                android:textColor="#000"/>
+
+
+        </TableRow>
+        <TableRow
+            android:paddingTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:gravity="center_horizontal">
+
+
+            <TextView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="18dp" android:text="Course start"  android:layout_span="3"
+                android:padding="18dip" android:background="@drawable/text_bg"
+                android:gravity="center"
+                android:textColor="#000"/>
+
+
+        </TableRow>
+
+
+
+
+        <TableRow
+            android:paddingTop="30dp"
+            android:id="@+id/tableRow1"
+            android:layout_height="300dp"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:id="@+id/TextView041" android:text="Roll No"
+
+                android:layout_weight="1" android:background="#dcdcdc"
+                android:textColor="#000000"
+                android:padding="20dip" android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/TextView042" android:text="TOA"
+                android:layout_weight="1" android:background="#d3d3d3"
+                android:textColor="#000000"
+                android:padding="20dip" android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/TextView043" android:text="Status"
+                android:layout_weight="1" android:background="#cac9c9"
+                android:textColor="#000000"
+                android:padding="20dip" android:gravity="center"/>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:id="@+id/TextView045" android:text="y13uc055"
+                android:layout_weight="1"
+                android:textColor="#000000"
+                android:padding="20dip" android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/TextView046" android:text="11:00 am"
+                android:layout_weight="1"
+                android:textColor="#000000"
+                android:padding="20dip" android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/TextView047"
+                android:maxWidth="75dp"
+                android:maxHeight="75dp"
+                android:layout_weight="1" android:background="@drawable/tick"
+                android:textColor="#000000"
+                android:padding="20dip" android:gravity="center"/>
+
+        </TableRow>
+
+
+
+
+    </TableLayout>
+
+</RelativeLayout>
