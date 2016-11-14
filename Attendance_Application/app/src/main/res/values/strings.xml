@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">android-nfc</string>
     <string name="title_activity_menu_main1">app_bar_menu_main1</string>
+    <string name="subject_pom">POM</string>
+    <string name="subject_fnft">FNFT</string>
+    <string name="subject_cc">CC</string>
+    <string name="subject_dm">DM</string>
+    <string name="subject_gcn">GCN</string>
+    <string name="subject_bfss">BFSS</string>
 </resources>

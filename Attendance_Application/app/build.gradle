@@ -18,6 +18,8 @@ android {
     }
     productFlavors {
     }
+    //some problem with test cases failing.
+    //TODO: check later
     testOptions {
         unitTests.returnDefaultValues = true
     }
@@ -28,5 +30,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile 'com.android.support:design:24.0.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta3'
 }
 
