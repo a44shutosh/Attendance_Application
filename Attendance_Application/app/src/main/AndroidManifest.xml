@@ -16,7 +16,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Status" />
-        <activity android:name=".Course_menu"></activity>
     </application>
 
 </manifest>
