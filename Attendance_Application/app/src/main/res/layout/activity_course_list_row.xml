@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_course_list_row"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ashutosh.foodie_guide.attendance_application.CourseListRow">
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="352dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/courseListTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:textAlignment="center"
+        android:gravity="center_vertical|center_horizontal"
+        android:textSize="@dimen/backdrop_subtitle" />
+</android.support.constraint.ConstraintLayout>
