@@ -20,7 +20,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.MainActivity" />
+
+        <activity
+            android:name=".activities.MainActivity"
+            android:label="MainActivity"
+            android:parentActivityName=".activities.NavDrawer" >>
+            <!-- adding the parent class name so that it can navigate to that class -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.NavDrawer" />
+        </activity>
         <activity android:name=".activities.Status" />
         <activity android:name=".activities.ActivityCourseList" />
         <activity android:name=".CourseListRow" />
