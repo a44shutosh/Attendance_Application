@@ -3,13 +3,13 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/register_tag"
+            android:id="@+id/view_attendance"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Register" />
+            android:title="View Attendance" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/register_tag"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="Register A Tag" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
