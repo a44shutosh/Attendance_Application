@@ -1,23 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ashutosh.foodie_guide.attendance_application">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.MainActivity">
+
+        <activity
+            android:name=".activities.NavDrawer"
+            android:label="@string/title_activity_nav_drawer"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".activities.MainActivity"
+            android:label="MainActivity"
+            android:parentActivityName=".activities.NavDrawer">
+            >
+            <!-- adding the parent class name so that it can navigate to that class -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.NavDrawer" />
+        </activity>
+
+        <activity
+            android:name=".activities.Register"
+            android:label="Register A Tag"
+            android:parentActivityName=".activities.NavDrawer">
+            >
+            <!-- adding the parent class name so that it can navigate to that class -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.NavDrawer" />
+        </activity>
+
         <activity android:name=".activities.Status" />
+
         <activity android:name=".activities.ActivityCourseList" />
-        <activity android:name=".CourseListRow"></activity>
+
+        <activity android:name=".CourseListRow" />
+
     </application>
 
 </manifest>
