@@ -2,7 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ashutosh.foodie_guide.attendance_application">
 
+    <!-- Permissions to use the Internet -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Permission to use the NFC hardware -->
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-sdk android:minSdkVersion="10"/>
+    <!-- so that your application shows up in Google Play only for devices that have NFC hardware -->
+    <uses-feature android:name="android.hardware.nfc" android:required="true" />
+
 
     <application
         android:allowBackup="true"
@@ -14,6 +21,7 @@
         <activity
             android:name=".activities.NavDrawer"
             android:label="@string/title_activity_nav_drawer"
+            android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,12 +44,19 @@
         <activity
             android:name=".activities.Register"
             android:label="Register A Tag"
+            android:launchMode="singleTask"
             android:parentActivityName=".activities.NavDrawer">
             >
             <!-- adding the parent class name so that it can navigate to that class -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.NavDrawer" />
+            <!-- Intent for NDEF_DISCOVERED -->
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/plain" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".activities.Status" />
