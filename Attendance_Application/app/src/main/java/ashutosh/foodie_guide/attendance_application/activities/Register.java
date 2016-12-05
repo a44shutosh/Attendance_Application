@@ -89,7 +89,21 @@ public class Register extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(Register.this,response,Toast.LENGTH_LONG).show();
+
+                        switch(Integer.parseInt(response)){
+                            case 200:
+                                response="User Successfully registered";
+                                break;
+                            case 300:
+                                response="User already registered";
+                                break;
+                            case 301:
+                                response="No User exists in DB";
+                                break;
+                            default:
+                                response="Server Error!";
+                        }
+                        Toast.makeText(Register.this,response,Toast.LENGTH_SHORT).show();
                     }
                 },
                 new Response.ErrorListener() {
