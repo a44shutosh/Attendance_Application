@@ -194,14 +194,15 @@ public class Register extends AppCompatActivity {
         NdefRecord appRecord = NdefRecord.createApplicationRecord(context.getPackageName());
 
         // Record with actual data we care about
-        /*NdefRecord relayRecord = new NdefRecord(NdefRecord.TNF_MIME_MEDIA,
-                new String("application/" + context.getPackageName())
-                        .getBytes(Charset.forName("US-ASCII")),
+        /*NdefRecord relayRecord = new NdefRecord(NdefRecord.TNF_WELL_KNOWN, new String("application/" + context.getPackageName()).getBytes(Charset.forName("US-ASCII")),
                 null, data.getBytes());*/
 
+        NdefRecord relayRecord = new NdefRecord(NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_TEXT, null, data.getBytes());
         // Complete NDEF message with both records
         /*NdefMessage message = new NdefMessage(new NdefRecord[] {relayRecord, appRecord});*/
-        NdefMessage message = new NdefMessage(new NdefRecord[] {appRecord});
+
+
+        NdefMessage message = new NdefMessage(new NdefRecord[] {appRecord, relayRecord});
 
         try {
             // If the tag is already formatted, just write the message to it
