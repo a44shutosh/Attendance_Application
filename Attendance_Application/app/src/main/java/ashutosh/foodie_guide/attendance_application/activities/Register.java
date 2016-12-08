@@ -58,9 +58,7 @@ public class Register extends AppCompatActivity {
             Log.e("NFC", "these are supported technologies by the tag" + tag.toString());
         } else {
             Toast.makeText(this, "Tag not found.", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Register.this, NavDrawer.class);
-            finish();
-            startActivity(intent);
+            returnToNav();
         }
     }
 
@@ -68,9 +66,7 @@ public class Register extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                Intent intent = new Intent(Register.this, NavDrawer.class);
-                finish();
-                startActivity(intent);
+                returnToNav();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -79,7 +75,7 @@ public class Register extends AppCompatActivity {
     public void onRegister(View view) {
         String seedValue = "UNBREAK";
         EditText et = (EditText) findViewById(R.id.editTextRegister);
-        final String MESSAGE = et.getText().toString();
+        final String MESSAGE = et.getText().toString().toLowerCase();
         Log.e("message", "This is the MESSAGE: " + MESSAGE);
 
         String normalText = MESSAGE;
@@ -105,7 +101,10 @@ public class Register extends AppCompatActivity {
                         switch(Integer.parseInt(response)){
                             case 200:
                                 response="User Successfully registered";
-                                break;
+                                Toast.makeText(Register.this,response,Toast.LENGTH_SHORT).show();
+                                createPendingIntent(finalNormalTextEnc);
+                                Toast.makeText(getApplicationContext(), "Touch the Tag again to register.", Toast.LENGTH_LONG).show();
+                                return;
                             case 300:
                                 response="User already registered";
                                 break;
@@ -156,11 +155,11 @@ public class Register extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
+    }
 
+    public void createPendingIntent(String encryptedText){
         // Construct the data to write to the tag
-        // Should be of the form [relay/group]-[rid/gid]-[cmd]
-        /*String nfcMessage = relay_type + "-" + id + "-" + cmd;*/
-        String nfcMessage = finalNormalTextEnc;
+        String nfcMessage = encryptedText;
 
         // When an NFC tag comes into range, call the main activity which handles writing the data to the tag
         Context context=getApplicationContext();
@@ -183,25 +182,31 @@ public class Register extends AppCompatActivity {
         if(nfcMessage != null) {
             if(writeTag(this, tag, nfcMessage)){
                 Log.e("NFC", "data successfully written");
+                Toast.makeText(getApplicationContext(), "NFC Tag registered successfull", Toast.LENGTH_LONG).show();
+                returnToNav();
             }else{
                 Log.e("NFC", "data could not be written");
+                Toast.makeText(getApplicationContext(), "NFC Tag registration failed. Please try again!", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
+    public void returnToNav(){
+        Intent intent1=new Intent(Register.this, NavDrawer.class);
+        finish();
+        startActivity(intent1);
+    }
     public static boolean writeTag(Context context, Tag tag, String data) {
         // Record to launch Play Store if app is not installed
         NdefRecord appRecord = NdefRecord.createApplicationRecord(context.getPackageName());
 
         // Record with actual data we care about
-        /*NdefRecord relayRecord = new NdefRecord(NdefRecord.TNF_MIME_MEDIA,
-                new String("application/" + context.getPackageName())
-                        .getBytes(Charset.forName("US-ASCII")),
+        /*NdefRecord relayRecord = new NdefRecord(NdefRecord.TNF_WELL_KNOWN, new String("application/" + context.getPackageName()).getBytes(Charset.forName("US-ASCII")),
                 null, data.getBytes());*/
+        NdefRecord relayRecord = new NdefRecord(NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_TEXT, null, data.getBytes());
 
         // Complete NDEF message with both records
-        /*NdefMessage message = new NdefMessage(new NdefRecord[] {relayRecord, appRecord});*/
-        NdefMessage message = new NdefMessage(new NdefRecord[] {appRecord});
+        NdefMessage message = new NdefMessage(new NdefRecord[] {appRecord, relayRecord});
 
         try {
             // If the tag is already formatted, just write the message to it

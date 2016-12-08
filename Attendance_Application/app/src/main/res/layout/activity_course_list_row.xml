@@ -7,7 +7,7 @@
     android:id="@+id/card_view_course_list"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="ashutosh.foodie_guide.attendance_application.CourseListRow"
+    tools:context="ashutosh.foodie_guide.attendance_application.activities.CourseListRow"
     cardview:cardCornerRadius="2dp"
     cardview:cardElevation="3dp"
     cardview:cardUseCompatPadding="true"
