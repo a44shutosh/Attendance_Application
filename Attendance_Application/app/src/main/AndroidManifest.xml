@@ -63,7 +63,7 @@
 
         <activity android:name=".activities.ActivityCourseList" />
 
-        <activity android:name=".CourseListRow" />
+        <activity android:name=".activities.CourseListRow" />
 
     </application>
 
